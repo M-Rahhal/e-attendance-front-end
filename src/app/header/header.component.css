@@ -1,0 +1,19 @@
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+
+
+  .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav{
+    display: flex;
+    gap: 15px;
+
+  }

@@ -1,0 +1,11 @@
+.example-label {
+    display: table-cell;
+    font-size: 88px;
+    margin-left: 8px;
+    min-width: 120px;
+    padding-top:150px;
+  }
+  div{
+    display: flex;
+    justify-content: center;
+  }
