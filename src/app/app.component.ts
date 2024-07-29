@@ -10,9 +10,10 @@ import { HeaderComponent } from "./header/header.component";
   selector: 'app-root',
   standalone: true,
   imports: [
-        RouterOutlet,
-        HeaderComponent
-      ],
+    RouterOutlet,
+    HeaderComponent,
+    AddEmployeeComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

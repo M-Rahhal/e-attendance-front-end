@@ -4,7 +4,9 @@
 
     @if (showHeadderButtons()) {
         <nav>
-            <app-button url="/add-employee">Add Employee</app-button>
+            @if (isAdmin()) {
+                <app-button url="/add-employee">Add Employee</app-button>
+            }
             <app-button url="/list-employees">List Employees</app-button>
             <app-button url="/attendance">Attendance</app-button>
             <app-button mat-button (click)="logout()">Logout</app-button>

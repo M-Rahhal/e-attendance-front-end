@@ -17,8 +17,11 @@ export class HeaderComponent {
     computed<boolean>(()=>
       this.authService.isLoggedIn()
     );
+
+  isAdmin: Signal<boolean> = computed<boolean>(()=> this.authService.role()==='admin'? true:false);
   
     logout(): void{
       this.authService.logout();
     }
+    
 }

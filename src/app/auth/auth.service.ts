@@ -10,6 +10,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/auth/login';
   isLoggedIn: WritableSignal<boolean> = signal<boolean>(false);
   token !: string;
+  role: WritableSignal<string> = signal("employee");
 
   router :Router = inject(Router);
   httpClient: HttpClient = inject(HttpClient);
@@ -25,8 +26,9 @@ export class AuthService {
         next: (resData: AuthResponse)=>{
           if(resData.status == true && resData.map_properties.token){
             this.isLoggedIn.set(true);
-            localStorage.setItem("token" , resData.map_properties.token);
+            localStorage.setItem("token" ,resData.map_properties.token);
             this.token = resData.map_properties.token;
+            this.role.set(resData.map_properties.role);
             this.router.navigate(['/attendance']);
           }
         }

@@ -3,5 +3,6 @@ export interface AuthResponse{
     status_code: number ,
     map_properties: {
         token: string
+        role: string
     }
 };

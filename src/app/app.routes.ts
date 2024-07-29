@@ -3,7 +3,8 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guard/auth.guard';
+import { AdminGuard } from './guard/admin.guard';
 
 
 export const routes: Routes = [
@@ -19,7 +20,7 @@ export const routes: Routes = [
     {
         path: "add-employee",
         component: AddEmployeeComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AdminGuard]
 
     },
     {
