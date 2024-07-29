@@ -1,14 +1,17 @@
 import {  HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { AuthResponse } from './auth.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth/login';
-  isLoggedIn: boolean = false;
+  isLoggedIn: WritableSignal<boolean> = signal<boolean>(false);
+  token !: string;
 
+  router :Router = inject(Router);
   httpClient: HttpClient = inject(HttpClient);
   constructor() { 
 
@@ -21,12 +24,19 @@ export class AuthService {
       }).subscribe({
         next: (resData: AuthResponse)=>{
           if(resData.status == true && resData.map_properties.token){
-            this.isLoggedIn = true;
+            this.isLoggedIn.set(true);
             localStorage.setItem("token" , resData.map_properties.token);
+            this.token = resData.map_properties.token;
+            this.router.navigate(['/attendance']);
           }
         }
       });
+  }
 
-      console.log(localStorage.getItem("token"));
+  logout(){
+    this.token = "";
+    this.isLoggedIn.set(false);
+    localStorage.removeItem("token");
+    this.router.navigate(['/login']);
   }
 }

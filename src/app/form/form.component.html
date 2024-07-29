@@ -21,7 +21,7 @@
             <mat-error>Password is <strong>required</strong></mat-error>
             }
         </mat-form-field>
-        @if(emailFormControl.hasError('email') && !emailFormControl.hasError('required') || passwordFormControl.hasError('required')){
+        @if(emailFormControl.hasError('email') || emailFormControl.hasError('required') || passwordFormControl.hasError('required')){
             <button mat-flat-button disabled>submit</button>
         }
         @else {

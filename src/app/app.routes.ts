@@ -3,6 +3,7 @@ import { ListEmployeesComponent } from './list-employees/list-employees.componen
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 export const routes: Routes = [
@@ -12,16 +13,25 @@ export const routes: Routes = [
     },
     {
         path: "list-employees",
-        component: ListEmployeesComponent
+        component: ListEmployeesComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: "add-employee",
-        component: AddEmployeeComponent
+        component: AddEmployeeComponent,
+        canActivate:[AuthGuard]
+
     },
     {
         path: "attendance",
         component: AttendanceComponent,
-
+        canActivate:[AuthGuard]
+    },
+    {
+        path: '', redirectTo: '/attendance', pathMatch: 'full' 
+    },
+    {
+        path: '**', redirectTo: '/attendance'
     }
  
 ];
