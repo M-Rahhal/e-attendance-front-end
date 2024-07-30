@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth/login';
-  isLoggedIn: WritableSignal<boolean> = signal<boolean>(false);
+  isLoggedIn: WritableSignal<boolean> = signal<boolean>(sessionStorage.getItem("loogedIn")==="true" ? true :false);
   token !: string;
   role: WritableSignal<string> = signal("employee");
 
@@ -26,7 +26,9 @@ export class AuthService {
         next: (resData: AuthResponse)=>{
           if(resData.status == true && resData.map_properties.token){
             this.isLoggedIn.set(true);
-            localStorage.setItem("token" ,resData.map_properties.token);
+            sessionStorage.setItem("token" ,resData.map_properties.token);
+            sessionStorage.setItem("loggedIn" , "true");
+            sessionStorage.setItem("role" , resData.map_properties.role);
             this.token = resData.map_properties.token;
             this.role.set(resData.map_properties.role);
             this.router.navigate(['/attendance']);
@@ -37,8 +39,8 @@ export class AuthService {
 
   logout(){
     this.token = "";
+    sessionStorage.clear();
     this.isLoggedIn.set(false);
-    localStorage.removeItem("token");
     this.router.navigate(['/login']);
   }
 }

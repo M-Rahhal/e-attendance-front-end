@@ -1,1 +1,70 @@
-<p>attendance works!</p>
+
+<button (click)="createPunch()">Punch Now</button>
+
+@if (response) {
+<table>
+    <tr>
+        <td>Sunday</td>
+        @for (item of getAttendancesBasedOnDay("Sunday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Monday</td>
+        @for (item of getAttendancesBasedOnDay("Monday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Tuesday</td>
+        @for (item of getAttendancesBasedOnDay("Tuesday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Wednesday</td>
+        @for (item of getAttendancesBasedOnDay("Wednesday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Thursday</td>
+        @for (item of getAttendancesBasedOnDay("Thursday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Friday</td>
+        @for (item of getAttendancesBasedOnDay("Friday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+
+    <tr>
+        <td>Saturday</td>
+        @for (item of getAttendancesBasedOnDay("Saturday"); track $index) {
+            @for (item2 of item.punchList; track $index) {
+                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+            }
+        }
+    </tr>
+    
+</table>
+}

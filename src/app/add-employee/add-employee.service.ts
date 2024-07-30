@@ -7,6 +7,8 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class AddEmployeeService {
+  
+
   private url:string = "http://localhost:8080/auth/register"
 
   httpClient : HttpClient = inject(HttpClient);
@@ -14,7 +16,7 @@ export class AddEmployeeService {
 
   addEmployee(employee: AddEmployeeRequest){
     let header : HttpHeaders = new HttpHeaders({
-      'Authorization': 'Bearer '+ this.authService.token
+      'Authorization': 'Bearer '+ sessionStorage.getItem("token")
     });
 
     this.httpClient.post<AddEmployeeResponse>(this.url , employee , {

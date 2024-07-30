@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
   }
 
   private checkLogin(): boolean {
-    if (this.authService.isLoggedIn() && this.authService.role() === "admin") {
+    if (sessionStorage.getItem("loggedIn")==="true" && sessionStorage.getItem("role") === "admin") {
       return true;
     } else {
       this.router.navigate(['/attendance']);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AttendanceComponent } from './attendance/attendance.component';
@@ -17,6 +17,10 @@ import { HeaderComponent } from "./header/header.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy{
   title = 'attendance-front-end';
+
+  ngOnDestroy(): void {
+    
+  }
 }

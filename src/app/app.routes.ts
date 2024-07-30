@@ -10,29 +10,33 @@ import { AdminGuard } from './guard/admin.guard';
 export const routes: Routes = [
     {
         path: "login",
-        component: LoginComponent
+        component: LoginComponent,
+        pathMatch: 'full'
     },
     {
         path: "list-employees",
         component: ListEmployeesComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard],
+         pathMatch: 'full'
     },
     {
         path: "add-employee",
         component: AddEmployeeComponent,
-        canActivate:[AdminGuard]
+        canActivate:[AdminGuard],
+         pathMatch: 'full'
 
     },
     {
         path: "attendance",
         component: AttendanceComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard],
+         pathMatch: 'full'
     },
     {
         path: '', redirectTo: '/attendance', pathMatch: 'full' 
     },
     {
-        path: '**', redirectTo: '/attendance'
+        path: '**', redirectTo: 'attendance'
     }
  
 ];
