@@ -1,70 +1,104 @@
+<div class="container">
+    <div class="page-headder d-flex gap-5 fl" >
+        <div>
+            Email: {{emplyeeDetails().map_properties.employee.email}}
+        </div>
+        <div>
+            Name: {{emplyeeDetails().map_properties.employee.firstName}} {{emplyeeDetails().map_properties.employee.lastName}}
+        </div>
 
-<button (click)="createPunch()">Punch Now</button>
+        <div>
+            Date of Birth: {{emplyeeDetails().map_properties.employee.dateOfBirth | date:'longDate'}}
+        </div>
 
-@if (response) {
-<table>
-    <tr>
-        <td>Sunday</td>
-        @for (item of getAttendancesBasedOnDay("Sunday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+    </div>
+
+    <button (click)="getReport()">generate repport</button>
+
+
+    <button (click)="createPunch()">Punch Now</button><br>
+    <button (click)="changeWeek('prev')">prev</button>
+    <span>{{weekEdges().start_date | date:'longDate'}} - {{weekEdges().end_date | date:'longDate'}}</span>
+    <button (click)="changeWeek('next')">next</button>
+    @if (response) {
+    <table class="blueTable">
+        <tr>
+            <td class="day">Sunday</td>
+            @for (item of getAttendancesBasedOnDay("Sunday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Monday</td>
-        @for (item of getAttendancesBasedOnDay("Monday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Monday</td>
+            @for (item of getAttendancesBasedOnDay("Monday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Tuesday</td>
-        @for (item of getAttendancesBasedOnDay("Tuesday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Tuesday</td>
+            @for (item of getAttendancesBasedOnDay("Tuesday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Wednesday</td>
-        @for (item of getAttendancesBasedOnDay("Wednesday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Wednesday</td>
+            @for (item of getAttendancesBasedOnDay("Wednesday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Thursday</td>
-        @for (item of getAttendancesBasedOnDay("Thursday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Thursday</td>
+            @for (item of getAttendancesBasedOnDay("Thursday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Friday</td>
-        @for (item of getAttendancesBasedOnDay("Friday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Friday</td>
+            @for (item of getAttendancesBasedOnDay("Friday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
+        </tr>
 
-    <tr>
-        <td>Saturday</td>
-        @for (item of getAttendancesBasedOnDay("Saturday"); track $index) {
-            @for (item2 of item.punchList; track $index) {
-                <td>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}}</td>
+        <tr>
+            <td class="day">Saturday</td>
+            @for (item of getAttendancesBasedOnDay("Saturday"); track $index) {
+                <td>
+                    @for (item2 of item.punchList; track $index) {
+                    <span>{{item2.start | date:'shortTime'}} - {{item2.end | date:'shortTime'}} | </span>
+                    }
+                </td>
             }
-        }
-    </tr>
-    
-</table>
-}
+        </tr>
+
+    </table>
+    }
+</div>

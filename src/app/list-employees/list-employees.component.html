@@ -1,1 +1,21 @@
-<p>list-employees works!</p>
+<div class="container">
+@for (employee of allEmployeesResponse().map_properties.employees; track $index) {
+    <div>
+         <div class="example-label">{{employee.email}}</div>
+        <p>{{employee.firstName}} + {{employee.lastName}}</p>
+        <p>{{employee.dateOfBirth }}</p>
+        <p>{{employee.phoneNumber}}</p>
+        <p>{{employee.joiningDate}}</p>
+        <h1>Last Attendance Record</h1>
+        @for (record of employee.attendanceList; track $index) {
+            <p>{{record.attendaceDate}}</p>
+            <h3>Punchs</h3>
+            <p>
+            @for (punch of record.punchList; track $index) {
+                <span>{{punch.start | date: 'shortTime'}} - {{punch.end | date: 'shortTime'}} | </span>
+            }
+            </p>
+        }
+    </div>
+}
+</div>
