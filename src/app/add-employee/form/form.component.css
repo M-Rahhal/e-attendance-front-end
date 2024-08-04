@@ -7,4 +7,7 @@ div{
     flex-direction: column;
   }
 
-  
+  mat-form-field{
+    padding: 15px;
+  }
+

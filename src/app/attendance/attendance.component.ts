@@ -3,11 +3,13 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {AttendaceElement, AttendanceResponse, EmployeeDetails} from './attendance.model';
 import {MatTableModule} from '@angular/material/table';
 import {CommonModule} from '@angular/common';
+import {MatCardModule} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-attendance',
   standalone: true,
-  imports: [MatTableModule, CommonModule],
+  imports: [MatTableModule, CommonModule, MatCardModule, MatButton],
   templateUrl: './attendance.component.html',
   styleUrl: './attendance.component.css',
 })

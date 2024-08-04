@@ -13,15 +13,15 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 })
 export class HeaderComponent {
   private authService : AuthService = inject(AuthService);
-  showHeadderButtons: Signal<boolean> = 
+  showHeadderButtons: Signal<boolean> =
     computed<boolean>(()=>
       this.authService.isLoggedIn() || sessionStorage.getItem("loggedIn")==="true"
     );
 
-  isAdmin: Signal<boolean> = computed<boolean>(()=> this.authService.role()==='admin'? true:false);
-  
+  isAdmin: Signal<boolean> = computed<boolean>(()=> sessionStorage.getItem("role")==='admin'? true:false);
+
     logout(): void{
       this.authService.logout();
     }
-    
+
 }

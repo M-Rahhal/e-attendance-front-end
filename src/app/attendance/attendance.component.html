@@ -1,25 +1,30 @@
 <div class="container">
-    <div class="page-headder d-flex gap-5 fl" >
-        <div>
+    <div class="page-header" >
+      <mat-card appearance="outlined" style="width: 100%">
+        <mat-card-content class="mat-content">
+          <div>
             Email: {{emplyeeDetails().map_properties.employee.email}}
-        </div>
-        <div>
+          </div>
+
+          <div>
             Name: {{emplyeeDetails().map_properties.employee.firstName}} {{emplyeeDetails().map_properties.employee.lastName}}
-        </div>
+          </div>
 
-        <div>
+          <div>
             Date of Birth: {{emplyeeDetails().map_properties.employee.dateOfBirth | date:'longDate'}}
-        </div>
-
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
-
-    <button (click)="getReport()">generate repport</button>
-
-
-    <button (click)="createPunch()">Punch Now</button><br>
-    <button (click)="changeWeek('prev')">prev</button>
+  <div class="generate-and-punch">
+    <button mat-button (click)="getReport()">generate repport</button>
+    <button mat-button (click)="createPunch()">Punch Now</button>
+  </div>
+  <div class="date-intervals">
+    <button mat-button (click)="changeWeek('prev')" >prev</button>
     <span>{{weekEdges().start_date | date:'longDate'}} - {{weekEdges().end_date | date:'longDate'}}</span>
-    <button (click)="changeWeek('next')">next</button>
+    <button mat-button (click)="changeWeek('next')">next </button>
+  </div>
     @if (response) {
     <table class="blueTable">
         <tr>

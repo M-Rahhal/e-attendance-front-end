@@ -1,1 +1,24 @@
-<app-form></app-form>
+
+<div class="container">
+  <div class="page-header" >
+    <mat-card appearance="outlined" style="width: 100%">
+      <mat-card-content class="mat-content">
+        <div>
+          Email: {{employeeDetails().map_properties.employee.email}}
+        </div>
+
+        <div>
+          Name: {{employeeDetails().map_properties.employee.firstName}} {{employeeDetails().map_properties.employee.lastName}}
+        </div>
+
+        <div>
+          Date of Birth: {{employeeDetails().map_properties.employee.dateOfBirth | date:'longDate'}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <h1 class="page-lable">New Employee</h1>
+  <app-form></app-form>
+
+</div>

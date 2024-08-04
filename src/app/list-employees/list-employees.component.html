@@ -1,21 +1,50 @@
 <div class="container">
+
+  <div class="page-header" >
+    <mat-card appearance="outlined" style="width: 100%">
+      <mat-card-content class="mat-content1">
+        <div>
+          Email: {{emplyeeDetails().map_properties.employee.email}}
+        </div>
+
+        <div>
+          Name: {{emplyeeDetails().map_properties.employee.firstName}} {{emplyeeDetails().map_properties.employee.lastName}}
+        </div>
+
+        <div>
+          Date of Birth: {{emplyeeDetails().map_properties.employee.dateOfBirth | date:'longDate'}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <h1>Employees</h1>
 @for (employee of allEmployeesResponse().map_properties.employees; track $index) {
+  <mat-card appearance="outlined" style="width: 100%; margin-bottom: 20px">
+    <mat-card-content class="mat-content">
     <div>
-         <div class="example-label">{{employee.email}}</div>
-        <p>{{employee.firstName}} + {{employee.lastName}}</p>
-        <p>{{employee.dateOfBirth }}</p>
-        <p>{{employee.phoneNumber}}</p>
-        <p>{{employee.joiningDate}}</p>
+        <p>Email: {{employee.email}}</p>
+        <p>Full Name: {{employee.firstName}} {{employee.lastName}}</p>
+        <p>Date of Birth: {{employee.dateOfBirth | date: "longDate"}}</p>
+        <p>Phone Number: {{employee.phoneNumber}}</p>
+        <p>Joining Date: {{employee.joiningDate  | date: "longDate"}}</p>
         <h1>Last Attendance Record</h1>
+      <table class="blueTable">
         @for (record of employee.attendanceList; track $index) {
-            <p>{{record.attendaceDate}}</p>
-            <h3>Punchs</h3>
-            <p>
-            @for (punch of record.punchList; track $index) {
-                <span>{{punch.start | date: 'shortTime'}} - {{punch.end | date: 'shortTime'}} | </span>
-            }
-            </p>
+          <tr>
+          <td class="day">{{record.attendaceDate  | date: "longDate"}}</td>
+            <div style="width: 100%; padding: 15px">
+          @for (punch of record.punchList; track $index) {
+            <span >{{punch.start | date: 'shortTime'}} - {{punch.end | date: 'shortTime'}} | </span>
+          }
+            </div>
+          </tr>
         }
+      </table>
     </div>
+    </mat-card-content>
+
+  </mat-card>
 }
 </div>
